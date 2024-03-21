@@ -59,7 +59,7 @@ function getDayName(date) {
     'Saturday',
   ];
 
-  return days[new Date(date).getDay()];
+  return days[new Date(date).getUTCDay()];
 }
 
 /**
@@ -74,13 +74,13 @@ function getDayName(date) {
  * Date('2024-02-16T00:00:00Z') => Date('2024-02-23T00:00:00Z')
  */
 function getNextFriday(date) {
-  let plusDays = 5 - date.getDay();
+  let plusDays = 5 - date.getUTCDay();
   if (plusDays < 0) {
     plusDays = 6;
   } else if (plusDays === 0) {
     plusDays = 7;
   }
-  return new Date(date.setDate(date.getDate() + plusDays));
+  return new Date(date.setUTCDate(date.getUTCDate() + plusDays));
 }
 
 /**
@@ -95,7 +95,7 @@ function getNextFriday(date) {
  * 2, 2024 => 29
  */
 function getCountDaysInMonth(month, year) {
-  return new Date(year, month).getUTCDate();
+  return new Date(year, month, 0).getUTCDate();
 }
 
 /**
@@ -174,7 +174,7 @@ function formatDate(date) {
  */
 function getCountWeekendsInMonth(month, year) {
   let weekdays = 0;
-  for (let i = 0; i < new Date(year, month).getUTCDate(); i += 1) {
+  for (let i = 0; i < new Date(year, month, 0).getUTCDate(); i += 1) {
     if (
       new Date(year, month - 1, i + 2).getUTCDay() === 6 ||
       !new Date(year, month - 1, i + 2).getUTCDay()
