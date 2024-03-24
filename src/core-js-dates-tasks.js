@@ -272,9 +272,7 @@ function getQuarter(date) {
  */
 function getWorkSchedule(period, countWorkDays, countOffDays) {
   let startDate = new Date(period.start.split('-').reverse().join('-'));
-  startDate = new Date(startDate.setDate(startDate.getDate() + 1));
-  let endDate = new Date(period.end.split('-').reverse().join('-'));
-  endDate = new Date(endDate.setDate(endDate.getDate() + 1));
+  const endDate = new Date(period.end.split('-').reverse().join('-'));
   const result = [];
   while (startDate <= endDate) {
     for (let i = 1; i <= countWorkDays + countOffDays; i += 1) {
