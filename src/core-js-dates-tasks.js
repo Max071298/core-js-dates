@@ -174,10 +174,10 @@ function formatDate(date) {
  */
 function getCountWeekendsInMonth(month, year) {
   let weekdays = 0;
-  for (let i = 0; i < new Date(year, month, 0).getUTCDate(); i += 1) {
+  for (let i = 0; i < new Date(year, month, 0).getDate(); i += 1) {
     if (
-      new Date(year, month - 1, i + 2).getUTCDay() === 6 ||
-      !new Date(year, month - 1, i + 2).getUTCDay()
+      new Date(year, month - 1, i + 1).getDay() === 6 ||
+      !new Date(year, month - 1, i + 1).getDay()
     ) {
       weekdays += 1;
     }
