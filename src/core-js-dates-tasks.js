@@ -227,12 +227,12 @@ function getWeekNumberByDate(date) {
  */
 function getNextFridayThe13th(date) {
   let result = new Date(
-    date.getUTCFullYear(),
-    date.getUTCMonth() + (date.getUTCDate() < 13 ? 0 : 1),
+    date.getFullYear(),
+    date.getMonth() + (date.getDate() < 13 ? 0 : 1),
     13
   );
-  while (result.getUTCDay() !== 5) {
-    result = new Date(result.setMonth(result.getUTCMonth() + 1));
+  while (result.getDay() !== 5) {
+    result = new Date(result.setMonth(result.getMonth() + 1));
   }
   return result;
 }
